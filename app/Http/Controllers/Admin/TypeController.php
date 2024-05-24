@@ -22,7 +22,7 @@ class TypeController extends Controller
     }
 
     public function typeProjects() {
-        $types = Type::all();
+        $types = Type::paginate(10);
         return view('admin.type.type-project', compact('types'));
     }
 

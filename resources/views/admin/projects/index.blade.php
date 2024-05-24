@@ -74,15 +74,15 @@
 
                                     </th>
 
-                                    {{-- <td class=" align-content-center ">
+                                    <td class=" align-content-center ">
                                         <input
                                             type="text"
                                             class="form-control"
 
                                             name="type"
-                                            value="{{$project->type->name}}">
+                                            value="{{$project->type}}">
 
-                                    </td> --}}
+                                    </td>
 
 
                                     <td class=" align-content-center ">
