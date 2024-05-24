@@ -63,7 +63,7 @@
                                         <input
                                         class=""
                                         type="text"
-                                        name="id"
+                                        name="name"
                                         value="{{ $technology->name }}">
                                         {{-- @error('name')
                                             <p class="text-danger text-small">{{$message}}</p>
