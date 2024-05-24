@@ -30,6 +30,15 @@
                             </a>
                           </li>
                     </ul>
+
+                    <ul>
+                        <li>
+                            <a href="{{ route('admin.type_project') }}">
+                              <i class="fa-regular fa-rectangle-list"></i>
+                              Elenco Progetti/Tipi
+                            </a>
+                          </li>
+                    </ul>
                 </nav>
             </div>
 

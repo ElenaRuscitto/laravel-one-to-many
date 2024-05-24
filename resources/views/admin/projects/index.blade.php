@@ -9,11 +9,7 @@
                 <h1 class="text-center ">I miei proggetti</h1>
             </div>
 
-            {{-- @if(session('deleted'))
-                <div class="alert alert-success" role="alert">
-                {{ session('deleted')}}
-                </div>
-            @endif --}}
+
 
             @if (session('successo'))
             <div class="alert alert-success h-25" role="alert">
@@ -53,7 +49,6 @@
                         <th scope="col">Titolo (*)</th>
                         <th scope="col">Tipo (*)</th>
                         <th scope="col">Link (*)</th>
-                        <th scope="col">Descrizione</th>
                         <th scope="col">Azioni</th>
                     </tr>
                     </thead>
@@ -68,40 +63,32 @@
                                     >
                                     @csrf
                                     @method('PUT')
-                                    {{-- <td class="align-content-center">
-                                        <input type="text" class="form-control @error('projects.'.$project->id.'.title') is-invalid @enderror" id="title-{{$project->id}}" name="projects[{{$project->id}}][title]" value="{{$project->title}}">
-                                        @error('projects.'.$project->id.'.title')
-                                        <p class="text-danger text-small">{{$message}}</p>
-                                        @enderror
-                                        </td> --}}
+
                                     <th class=" align-content-center ">
                                         <input
                                             type="text"
-                                            class="form-control  @error('title') is-invalid @enderror"
+                                            class="form-control"
 
                                             name="title"
                                             value="{{$project->title}}">
-                                            @error('title')
-                                                <p class="text-danger text-small">{{$message}}</p>
-                                            @enderror
+
                                     </th>
 
-                                    <td class=" align-content-center ">
+                                    {{-- <td class=" align-content-center ">
                                         <input
                                             type="text"
-                                            class="form-control  @error('type') is-invalid @enderror"
+                                            class="form-control"
 
                                             name="type"
-                                            value="{{$project->type}}">
-                                            @error('type')
-                                                <p class="text-danger text-small">{{$message}}</p>
-                                            @enderror
-                                    </td>
+                                            value="{{$project->type->name}}">
+
+                                    </td> --}}
+
 
                                     <td class=" align-content-center ">
                                         <input
                                             type="text"
-                                            class="form-control @error('link') is-invalid @enderror"
+                                            class="form-control w-100"
 
                                             name="link"
                                             value="{{$project->link}}">
@@ -110,15 +97,6 @@
                                             @enderror
                                     </td>
 
-                                    <td class="w-50 align-content-center">
-                                        <textarea
-                                            cols="30"
-                                            rows="3"
-                                            class="form-control "
-
-                                            name="description"
-                                            value="">{{$project->description}}</textarea>
-                                    </td>
 
                                     <td class="d-flex justify-content-center align-items-center my-4 ">
 

@@ -36,9 +36,10 @@ Route::middleware(['auth', 'verified'])
             Route::get('/', [DashboardController::class, 'index'])->name('home');
             Route::resource('projects', ProjectController::class);
             Route::resource('technologies', TechnologyController::class)->except(['show', 'create', 'edit']);
+
             Route::resource('types', TypeController::class)->except(['index', 'show', 'create', 'edit']);
 
-            // rotte CRUD
+            Route::get('type-project', [TypeController::class, 'typeProjects'])->name('type_project');
          });
 
 

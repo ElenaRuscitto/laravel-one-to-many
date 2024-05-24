@@ -5,9 +5,11 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Technology;
+use App\Models\Project;
 use App\Models\Type;
 use App\Functions\Helper as Help;
 use App\Http\Requests\TechnologyRequest;
+
 
 class TypeController extends Controller
 {
@@ -17,6 +19,11 @@ class TypeController extends Controller
     public function index()
     {
 
+    }
+
+    public function typeProjects() {
+        $types = Type::all();
+        return view('admin.type.type-project', compact('types'));
     }
 
     /**

@@ -21,16 +21,15 @@ class ProjectsTableSeeder extends Seeder
          for ($i=0; $i < 60 ; $i++) {
              $new_project = new Project();
 
-             // associo randomicamente un ID della categoria al post
-            $new_project->type_id = Type::inRandomOrder()->first()->id;
-
-
-
              $new_project->title = $faker->word(9, true);
              $new_project->slug = Help::generateSlug($new_project->title, Project::class);
              $new_project->link =$faker->url();
              $new_project->type =$faker->word(9, true);
              $new_project->description =$faker->paragraph(3, true);
+
+
+            // associo randomicamente un ID della categoria al post
+            $new_project->type_id = Type::inRandomOrder()->first()->id;
              $new_project->save();
          }
      }
