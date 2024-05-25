@@ -6,7 +6,7 @@
 @section('content')
 
     <div class="container my-container">
-        <h1>Aggiungi un nuovo Progetto</h1>
+        <h1 class="mb-5">{{$title}}</h1>
 
         @if ($errors->any())
             <div class="alert alert-danger" role="alert">
@@ -27,9 +27,9 @@
             </div>
         @endif
 
-        <form action="{{route('admin.projects.store')}}" method="POST">
+        <form action="{{$route}}" method="POST">
             @csrf
-
+            @method($method)
             <div class="mb-3">
                 <label for="title" class="form-label">Titolo</label>
                 <input
@@ -38,7 +38,7 @@
                     id="title"
                     aria-describedby="emailHelp"
                     name="title"
-                    value="{{old('title')}}">
+                    value="{{old('title', $project?->title)}}">
 
                     @error('title')
                         <small class="text-danger">
@@ -48,7 +48,7 @@
             </div>
 
             <div class="mb-3">
-                <label for="type" class="form-label">Tipo</label>
+                {{-- <label for="type" class="form-label">Tipo</label>
                 <input
                     type="text"
                     class="form-control @error('type') is-invalid @enderror"
@@ -60,7 +60,23 @@
                         <small class="text-danger">
                             {{$message}}
                         </small>
-                    @enderror
+                    @enderror --}}
+                    <label for="type" class="form-label">Tipo</label>
+                    <select name="type_id"
+                    class="form-select "
+                    aria-label="Default select example"
+                    >
+
+                    <option value="">Seleziona un tipo</option>
+                        @foreach ($types as $type )
+                        <option
+                        value="{{$type->id}}"
+                        @if(old('type_id', $project?->type_id) == $type->id ) selected  @endif>
+                        {{$type->name}}
+                        </option>
+
+                        @endforeach
+                    </select>
             </div>
 
             <div class="mb-3">
@@ -71,7 +87,7 @@
                     id="link"
                     aria-describedby="emailHelp"
                     name="link"
-                    value="{{old('link')}}">
+                    value="{{old('link', $project?->link)}}">
                     @error('link')
                         <small class="text-danger">
                             {{$message}}
@@ -93,8 +109,12 @@
             </div>
 
             <div>
-                <button class="btn btn-primary " type="submit">Aggiungi Progetto</button>
-            </div>
+                <button type="submit" class="btn {{Route::currentRouteName() === 'admin.projects.create' ? 'btn-success' : 'btn-success'}}">{{$button}}</button>
+                <a class="btn btn-primary" href="{{route('admin.projects.index')}}">Torna ai Progetti</a>
+
+
+                {{-- <button class="btn btn-primary " type="submit">Aggiungi Progetto</button>
+            </div> --}}
         </form>
     </div>
 

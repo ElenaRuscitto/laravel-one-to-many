@@ -105,13 +105,15 @@
                                                 <i
                                             class="fa-solid fa-eye"></i>
                                         </a>
+                                        <a href="{{route('admin.projects.edit', $project)}}" class="btn btn-warning my-2"><i
+                                            class="fa-solid fa-pen"></i></a>
 
-                                            <button
+                                            {{-- <button
                                                 type="submit"
                                                 class="btn btn-warning"
                                                 onclick="submitForm({{$project->id}})">
                                                     <i class="fa-solid fa-pen"></i>
-                                            </button>
+                                            </button> --}}
 
                                 </form>
                                             <form

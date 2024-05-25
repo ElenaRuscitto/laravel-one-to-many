@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\ProjectRequest;
 use Illuminate\Http\Request;
 use App\Models\Project;
+use App\Models\Type;
 use App\Functions\Helper as Help;
 
 class ProjectController extends Controller
@@ -24,7 +25,15 @@ class ProjectController extends Controller
      */
     public function create()
     {
-       return view('admin.projects.create');
+        $title='Aggiungi un nuovo progetto';
+        $route=route('admin.projects.store');
+        $project=null;
+        $button='Salva';
+        $method= 'POST';
+        $types = Type::all();
+
+        return view('admin.projects.create-edit', compact('title','route','project', 'button','method','types'));
+
     }
 
     /**
@@ -39,7 +48,7 @@ class ProjectController extends Controller
         // controllo se esiste già il progetto
             if($exixts) {
 
-                return redirect()->route('admin.projects.create')->with('error', 'Progetto già esistente!');
+                return redirect()->route('admin.projects.create-edit')->with('error', 'Progetto già esistente!');
 // controllo di successo nell'aggiunta del progetto
             } else {
 
@@ -72,9 +81,17 @@ class ProjectController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+
+
+    //  MODIFICA PROGETTO
+    public function edit(Project $project)
     {
-        //
+        $title='Modifica Progetto';
+        $route=route('admin.projects.update', $project);
+        $button='Salva' ;
+        $method= 'PUT';
+        $types = Type::all();
+        return view('admin.projects.create-edit', compact('title','route','project', 'button','method','types'));
     }
 
     /**

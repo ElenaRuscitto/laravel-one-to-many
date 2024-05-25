@@ -17,7 +17,7 @@ return new class extends Migration
            $table->string('title', 60);
            $table->string('slug', 70)->unique();
            $table->text('link');
-           $table->string('type');
+           $table->string('type')->nullable();
            $table->text('description')->nullable();
 
            $table->timestamps();

@@ -1,3 +1,6 @@
+
+
+
 @extends('layouts.admin')
 
 @section('content')
@@ -36,7 +39,7 @@
                     </form>
 
 
-                        <a href="{{route('admin.projects.index')}}" class="btn btn-success mx-2">Torna ai projects</a>
+                        <a href="{{route('admin.projects.index')}}" class="btn btn-success mx-2">Torna ai Progetti</a>
 
                     </div>
 
