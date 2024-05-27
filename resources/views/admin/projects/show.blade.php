@@ -19,21 +19,20 @@
             <div class="col">
                       <h5 class="card-title mb-2">Titolo: {{$project->title}}</h5>
                       <p class="card-text">Link: {{$project->link}}</p>
-                      <p class="card-text">Tipo: {{$project->type}}</p>
+                      <p class="card-text">Tipo: {{$project->type->name}}</p>
                       <p class="card-text">Descrizione: {{$project->description}}</p>
 
                     <div class="d-flex mb-3">
 
                         <form
-                        action="{{route('admin.projects.destroy', $project)}}"
-                        method="post"
-                        onsubmit="return confirm('Sei sicuro di voler eliminare . {{$project->name}} . ?')">
+                            action="{{route('admin.projects.destroy', $project)}}"
+                            method="post"
+                            onsubmit="return confirm('Sei sicuro di voler eliminare . {{$project->name}} . ?')">
                         @csrf
                         @method('DELETE')
                             <button
                                 type="submit"
-                                class="btn btn-danger mx-2"
-                                >
+                                class="btn btn-danger mx-2">
                                 <i class="fa-solid fa-trash"></i>
                             </button>
                     </form>

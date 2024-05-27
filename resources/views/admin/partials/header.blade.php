@@ -21,13 +21,32 @@
       {{-- dx --}}
       <div class="d-flex">
 
-        <p class="pt-2">{{Auth::user()->name}}</p>
+        <div class="input-group mb-3 me-4 mt-3">
+
+            <form
+                action="{{route('admin.projects.index')}}"
+                method="GET"
+                class="d-flex me-3"
+                role="search">
+                <input
+                    type="search"
+                    name="toSearch"
+                    class="form-control"
+                    placeholder="Cerca Progetto"
+                    aria-label="Recipient's username"
+                    aria-describedby="button-addon2">
+
+                <button class="btn btn-outline-secondary" type="submit" id="button-addon2"><i class="fa-solid fa-magnifying-glass"></i></button>
+            </form>
+          </div>
+
+        <p class="pt-4">{{Auth::user()->name}}</p>
 
         <form
             action="{{ route('logout') }}"
             method="POST">
             @csrf
-            <button type="submit" class="btn btn-light ms-3">
+            <button type="submit" class="btn btn-light ms-3 mt-3" >
                 <i class="fa-solid fa-right-from-bracket"></i>
             </button>
         </form>

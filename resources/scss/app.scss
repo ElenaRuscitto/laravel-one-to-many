@@ -4,7 +4,16 @@
 header {
     height: 85px;
     background-color: rgb(26, 38, 57) !important;
+
 }
+a {
+    &:hover {
+        color: rgb(11, 94, 215) !important;
+    }
+}
+// /header
+
+
 
 .my-navbar {
     background-color: rgb(26, 38, 57) !important;
@@ -16,7 +25,7 @@ header {
 
 
 .my-container {
-    margin-top: 97px !important;
+    margin-top: 120px !important;
     margin-left: 190px !important;
 }
 
@@ -42,5 +51,9 @@ textarea {
 .my-ul {
     list-style: none;
     padding-left: 0 !important;
+}
+
+p {
+    margin: 0 !important;
 }
 

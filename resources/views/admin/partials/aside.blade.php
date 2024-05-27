@@ -6,7 +6,7 @@
                 <nav>
                     <ul>
                         <li>
-                            <a href="">
+                            <a href="{{route('admin.home')}}">
                                 <i class="fa-solid fa-house-chimney"></i>
                                  Home
                             </a>
@@ -34,7 +34,7 @@
                     <ul>
                         <li>
                             <a href="{{ route('admin.type_project') }}">
-                              <i class="fa-regular fa-rectangle-list"></i>
+                                <i class="fa-solid fa-list"></i>
                               Elenco Progetti/Tipi
                             </a>
                           </li>

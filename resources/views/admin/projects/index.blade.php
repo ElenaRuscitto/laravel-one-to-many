@@ -6,7 +6,7 @@
     <div class="container my-container">
         <div class="">
             <div class=" ">
-                <h1 class="text-center ">I miei proggetti</h1>
+                <h1 class="text-center ">I miei Progetti</h1>
             </div>
 
 
@@ -49,11 +49,16 @@
                         <th scope="col">Titolo (*)</th>
                         <th scope="col">Tipo (*)</th>
                         <th scope="col">Link (*)</th>
-                        <th scope="col">Azioni</th>
+                        <th scope="col" class="text-center">Azioni</th>
                     </tr>
                     </thead>
                     <tbody>
-                        @foreach ($projects as $project )
+
+
+
+
+
+                        @forelse ($projects as $project )
                             <tr>
 
                                 <form
@@ -67,21 +72,19 @@
                                     <th class=" align-content-center ">
                                         <input
                                             type="text"
-                                            class="form-control"
-
+                                            class="form-control p-0"
                                             name="title"
                                             value="{{$project->title}}">
 
                                     </th>
 
                                     <td class=" align-content-center ">
-                                        <p>{{$project->type->name}}</p>
-                                        {{-- <input
-                                            type="text"
-                                            class="form-control"
 
+                                        <input
+                                            type="text"
+                                            class="form-control p-0"
                                             name="type"
-                                            value="{{$project->type}}"> --}}
+                                            value="{{$project->type->name}}">
 
                                     </td>
 
@@ -89,7 +92,7 @@
                                     <td class=" align-content-center ">
                                         <input
                                             type="text"
-                                            class="form-control w-100"
+                                            class="form-control w-100 p-0"
 
                                             name="link"
                                             value="{{$project->link}}">
@@ -108,13 +111,6 @@
                                         </a>
                                         <a href="{{route('admin.projects.edit', $project)}}" class="btn btn-warning my-2"><i
                                             class="fa-solid fa-pen"></i></a>
-
-                                            {{-- <button
-                                                type="submit"
-                                                class="btn btn-warning"
-                                                onclick="submitForm({{$project->id}})">
-                                                    <i class="fa-solid fa-pen"></i>
-                                            </button> --}}
 
                                 </form>
                                             <form
@@ -135,9 +131,11 @@
 
 
                             </tr>
+                            @empty
+                            <h1>Non ci sono Progetti con questo nome</h1>
 
 
-                        @endforeach
+                        @endforelse
 
                     </tbody>
 
