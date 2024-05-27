@@ -24,7 +24,7 @@ class ProjectRequest extends FormRequest
         return [
             'title' => 'required|min:5|max:60',
             'link' => 'required',
-            'type' => 'required',
+
         ];
     }
 
@@ -34,8 +34,8 @@ class ProjectRequest extends FormRequest
             'title.required' => 'Il Titolo è un campo obbligatorio',
             'title.min' => 'Il Titolo deve essere almeno di :min  caratteri',
             'title.max' => 'Il Titolo può essere al massimo di :max  caratteri',
-            'link.required' => 'Il Link è un campo obbligatorio',
-            'type.required' => 'Il Tipo è un campo obbligatorio',
+            'link.required' => 'Il Link è un campo obbligatorio'
+
         ];
     }
 }

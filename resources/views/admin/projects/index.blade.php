@@ -75,12 +75,13 @@
                                     </th>
 
                                     <td class=" align-content-center ">
-                                        <input
+                                        <p>{{$project->type->name}}</p>
+                                        {{-- <input
                                             type="text"
                                             class="form-control"
 
                                             name="type"
-                                            value="{{$project->type}}">
+                                            value="{{$project->type}}"> --}}
 
                                     </td>
 
@@ -98,7 +99,7 @@
                                     </td>
 
 
-                                    <td class="d-flex justify-content-center align-items-center my-4 ">
+                                    <td class="d-flex justify-content-center align-items-center ">
 
 
                                              <a href="{{route('admin.projects.show', $project)}}" class="btn btn-primary me-2">
