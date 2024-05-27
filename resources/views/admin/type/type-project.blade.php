@@ -8,7 +8,7 @@
                 <h1 class="text-center ">Elenco per Tipo</h1>
 
 
-                <table class="table">
+                <table class="table mt-5">
 
                         <thead>
                         <tr>
@@ -20,12 +20,12 @@
                             @foreach ($types as $type )
                                 <tr>
 
-                                        <th class=" align-content-center "> {{$type->name}} </th>
+                                        <th class=" align-content-center"> {{$type->name}} </th>
 
                                         <td class=" align-content-center ">
                                             <ul class="my-ul">
                                                 @foreach ($type->projects as $project)
-                                                    <li class="my-li"> {{$project->title}} {{$project->id}}</li>
+                                                    <li class="my-li"> <a href="{{route('admin.projects.show', $project)}}">{{$project->title}} {{$project->id}}</a></li>
                                                 @endforeach
                                             </ul>
 
