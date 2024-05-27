@@ -24,6 +24,7 @@ class ProjectRequest extends FormRequest
         return [
             'title' => 'required|min:5|max:60',
             'link' => 'required',
+            'image' => 'image|mimes:jpg,png|max:20480'
 
         ];
     }
@@ -34,8 +35,10 @@ class ProjectRequest extends FormRequest
             'title.required' => 'Il Titolo è un campo obbligatorio',
             'title.min' => 'Il Titolo deve essere almeno di :min  caratteri',
             'title.max' => 'Il Titolo può essere al massimo di :max  caratteri',
-            'link.required' => 'Il Link è un campo obbligatorio'
-
+            'link.required' => 'Il Link è un campo obbligatorio',
+            'image.image' => 'Il file caricato deve essere un immagine',
+            'image.mimes' => "L'immagine caricata può essere solo in formato .jpg e .png",
+            'image.max' => "L'immagine caricata non può essere più pesante di :max KB"
         ];
     }
 }

@@ -6,7 +6,7 @@
                 <nav>
                     <ul>
                         <li>
-                            <a href="{{route('admin.home')}}">
+                            <a href="{{route('admin.home')}}" class="my-a">
                                 <i class="fa-solid fa-house-chimney"></i>
                                  Home
                             </a>
@@ -15,7 +15,7 @@
 
                     <ul>
                         <li>
-                            <a href="{{route('admin.projects.index')}}">
+                            <a href="{{route('admin.projects.index')}}" class="my-a">
                                 <i class="fa-regular fa-chart-bar"></i>
                                 I Miei Progetti
                             </a>
@@ -24,7 +24,7 @@
 
                     <ul>
                         <li>
-                            <a href="{{ route('admin.technologies.index') }}">
+                            <a href="{{ route('admin.technologies.index') }}" class="my-a">
                               <i class="fa-regular fa-rectangle-list"></i>
                               Tecnologie e Tipi
                             </a>
@@ -33,7 +33,7 @@
 
                     <ul>
                         <li>
-                            <a href="{{ route('admin.type_project') }}">
+                            <a href="{{ route('admin.type_project') }}" class="my-a">
                                 <i class="fa-solid fa-list"></i>
                               Elenco Progetti/Tipi
                             </a>

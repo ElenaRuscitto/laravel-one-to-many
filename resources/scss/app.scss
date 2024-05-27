@@ -4,9 +4,9 @@
 header {
     height: 85px;
     background-color: rgb(26, 38, 57) !important;
-
 }
-a {
+
+.my-a {
     &:hover {
         color: rgb(11, 94, 215) !important;
     }
@@ -57,3 +57,6 @@ p {
     margin: 0 !important;
 }
 
+.my-img {
+    width: 500px;
+}

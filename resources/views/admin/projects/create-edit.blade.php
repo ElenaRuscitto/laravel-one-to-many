@@ -6,7 +6,7 @@
 @section('content')
 
     <div class="container my-container">
-        <h1 class="mb-5">{{$title}}</h1>
+        <h1 class="mb-5 text-center">{{$title}}</h1>
 
         @if ($errors->any())
             <div class="alert alert-danger" role="alert">
@@ -27,7 +27,7 @@
             </div>
         @endif
 
-        <form action="{{$route}}" method="POST">
+        <form action="{{$route}}" method="POST" enctype="multipart/form-data">
             @csrf
             @method($method)
             <div class="mb-3">
@@ -73,7 +73,6 @@
                     type="text"
                     class="form-control @error('link') is-invalid @enderror"
                     id="link"
-                    aria-describedby="emailHelp"
                     name="link"
                     value="{{old('link', $project?->link)}}">
                     @error('link')
@@ -82,6 +81,22 @@
                         </small>
                     @enderror
             </div>
+
+
+            <div class="mb-3">
+                <label for="image" class="form-label">Immagine</label>
+                <input
+                  type="file"
+                  class="form-control"
+                  name="image"
+                  placeholder="Inserisci immagine"
+                  onchange="showImage(event)"
+                  value="{{old('image', $project?->image)}}">
+                  <img class="thumb w-25 mt-2" id="thumb" src="{{asset('storage/' . $project?->image)}}"
+                  onerror="this.src='/img/no-image.png'">
+                  {{-- <p>{{$project?->original_image}}</p> --}}
+            </div>
+
 
             <div class="mb-3">
                 <label for="description" class="form-label">Descrizione</label>
@@ -106,6 +121,16 @@
         </form>
     </div>
 
+
+
+
+    <script>
+        function showImage(event){
+            const thumb = document.getElementById('thumb');
+            thumb.src = URL.createObjectURL(event.target.files[0]);
+
+        }
+    </script>
 
 
 @endsection

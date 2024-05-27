@@ -72,7 +72,7 @@
                                     <th class=" align-content-center ">
                                         <input
                                             type="text"
-                                            class="form-control p-0"
+                                            class="form-control p-0 text-capitalize"
                                             name="title"
                                             value="{{$project->title}}">
 

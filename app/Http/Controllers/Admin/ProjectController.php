@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\Project;
 use App\Models\Type;
 use App\Functions\Helper as Help;
+use Illuminate\Support\Facades\Storage;
 
 class ProjectController extends Controller
 {
@@ -50,6 +51,18 @@ class ProjectController extends Controller
     public function store(ProjectRequest $request)
     {
         $form_data = $request->all();
+
+        // verifico l'esistenza della chiave 'image' in $form_data
+        if(array_key_exists('image', $form_data)) {
+            // salvo immagine nello storage e ottengo il percorso
+            $image_path = Storage::put('uploads', $form_data['image']);
+
+            $original_image = $request->file('image')->getClientOriginalName();
+
+            $form_data['image'] = $image_path;
+            $form_data['original_image'] = $original_image;
+
+        }
 
         $exixts = Project::where('title', $form_data['title'])->first();
 
@@ -110,25 +123,26 @@ class ProjectController extends Controller
         $form_data = $request->all();
 
 
+             // verifico l'esistenza della chiave 'image' in $form_data
+            if(array_key_exists('image', $form_data)){
+                // salvo l'immagine nello storage e ottengo il percorso
+                $image_path = Storage::put('uploads', $form_data['image']);
 
-        // controllo sulla validità dei dati inseriti e slug
-        $exist = Project::where('title', $form_data['title'])->first();
+                // ottengo il nome originale dell'immagine
+                $original_image = $request->file('image')->getClientOriginalName();
+                $form_data['image']= $image_path;
+                $form_data['original_image']= $original_image;
 
-        if($exist) {
+            }
 
-            return redirect()->route('admin.projects.index')->with('error', 'Progetto già esistente');
-
-        } else {
             if($form_data['title'] === $project->title){
             $form_data['slug'] = $project->slug;
-
-            } else {
-
+            }else{
                 $form_data['slug'] = Help::generateSlug($form_data['title'], Project::class) ;
             }
 
-
-        }
+            $project->update($form_data);
+            return redirect()->route('admin.projects.index',$project)->with('update', 'Il progetto è stato aggiornato');
 
         $project->update($form_data);
 
